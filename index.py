@@ -67,7 +67,6 @@ def update_blinkt(led_id):
 
 @app.route('/blinkt/all', methods=['PUT'])
 def update_blinkt_all():
-	print(request.form.get)
 	for led in blinkt:
 		led['brightness'] = float(request.form.get('brightness'))
 		led['color'] = request.form.get('color')
