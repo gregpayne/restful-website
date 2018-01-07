@@ -7,14 +7,14 @@ import blinktControl
 app = Flask(__name__)
 
 blinkt = [
-	{'id': 0, 'state': False },
-	{'id': 1, 'state': False },
-	{'id': 2, 'state': False },
-	{'id': 3, 'state': False },
-	{'id': 4, 'state': False },
-	{'id': 5, 'state': False },
-	{'id': 6, 'state': False },
-	{'id': 7, 'state': False },
+	{'id': 0, 'color': 'FFFFFF', 'state': False },
+	{'id': 1, 'color': 'FFFFFF', 'state': False },
+	{'id': 2, 'color': 'FFFFFF', 'state': False },
+	{'id': 3, 'color': 'FFFFFF', 'state': False },
+	{'id': 4, 'color': 'FFFFFF', 'state': False },
+	{'id': 5, 'color': 'FFFFFF', 'state': False },
+	{'id': 6, 'color': 'FFFFFF', 'state': False },
+	{'id': 7, 'color': 'FFFFFF', 'state': False },
 ]
 
 
@@ -53,7 +53,7 @@ def set_blinkt_state(led, state):
 			blinktControl.clearLed(int(led))
 		else:
 			blinktControl.setLed(int(led))
-	return jsonify([]) # Need to send response based on successful request
+	return jsonify(blinkt) # Need to send response based on successful request
 
 # Local methods and runnint the app
 ipaddr = getIpAddress.IpAddress()
