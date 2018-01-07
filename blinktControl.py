@@ -5,7 +5,7 @@ import time
 from colormap.colors import hex2rgb
 
 def setLed(led, brightness, color, state):
-	if state:
+	if state == "true":
 		blinkt.set_brightness(brightness) # set the brightness between 0 and 1
 		blinkt.set_pixel(led, getR(color), getG(color), getB(color))
 		blinkt.show()
@@ -16,16 +16,14 @@ def clearLed(led):
 	blinkt.set_pixel(led, 0, 0, 0)
 	blinkt.show()
 
-def setAll(brightness, color):
-	blinkt.set_brightness(brightness) # set the brightness between 0 and 1
+def setAll(brightness, color, state):
 	for i in range(8):
-		blinkt.set_pixel(i, getR(color), getG(color), getB(color))
-	blinkt.show()
+		setLed(i, brightness, color, state)
 
-def clearAll():
-	blinkt.set_brightness(brightness) # set the brightness between 0 and 1
-	blinkt.clear()
-	blinkt.show()
+#def clearAll():
+#	for i in range(8):
+#		setLed(i, brightness, color, False)
+#	blinkt.show()
 
 def getR(color):
 	c = hex2rgb(color, normalise=False)

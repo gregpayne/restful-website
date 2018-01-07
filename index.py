@@ -65,6 +65,16 @@ def update_blinkt(led_id):
 	blinktControl.setLed(int(led_id), blinkt[int(led_id)]['brightness'], blinkt[int(led_id)]['color'], blinkt[int(led_id)]['state'])
 	return jsonify(blinkt)
 
+@app.route('/blinkt/all', methods=['PUT'])
+def update_blinkt_all():
+	print(request.form.get)
+	for led in blinkt:
+		led['brightness'] = float(request.form.get('brightness'))
+		led['color'] = request.form.get('color')
+		led['state'] = request.form.get('state')
+		blinktControl.setAll(led['brightness'], led['color'], led['state'])
+	return jsonify(blinkt)
+
 # Local methods and runnint the app
 ipaddr = getIpAddress.IpAddress()
 print(ipaddr)
