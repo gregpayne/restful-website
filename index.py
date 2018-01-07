@@ -52,8 +52,18 @@ def set_blinkt_state(led, state):
 		if int(state) == 0:
 			blinktControl.clearLed(int(led))
 		else:
-			blinktControl.setLed(int(led), 1, '#FF0000')
+			blinktControl.setLed(int(led), 0.1, '#FF0000', True)
 	return jsonify(blinkt) # Need to send response based on successful request
+
+@app.route('/blinkt/<led_id>', methods=['PUT'])
+def update_blinkt(led_id):
+	led = blinkt[int(led_id)]
+#	print(request.form)
+	blinkt[int(led_id)]['brightness'] = float(request.form.get('brightness'))
+	blinkt[int(led_id)]['color'] = request.form.get('color')
+	blinkt[int(led_id)]['state'] = request.form.get('state')
+	blinktControl.setLed(int(led_id), blinkt[int(led_id)]['brightness'], blinkt[int(led_id)]['color'], blinkt[int(led_id)]['state'])
+	return jsonify(blinkt)
 
 # Local methods and runnint the app
 ipaddr = getIpAddress.IpAddress()
