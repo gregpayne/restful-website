@@ -19,27 +19,27 @@ blinkt = [
 
 
 # HTTP pages
-@app.route('/', methods=['GET'])
-def index():
-	if request.args.get('LedOn'):
-		led = int(request.args.get('number'))
-		blinktControl.setLed(led - 1)
-		status = "LED %d turned on" % led
-	elif request.args.get('LedOff'):
-		led = int(request.args.get('number'))
-		blinktControl.clearLed(led - 1)
-		status = "LED %d turned off" % led
-	elif request.args.get('allOff'):
-		blinktControl.clearAll()
-		status = "All LEDs turned off"
-	elif request.args.get('allOn'):
-		blinktControl.setAll()
-		status = "All LEDs turned on"
-	else:
-		print('no idea...')
-		status = ""
-
-	return render_template('index.html', status=status)
+#@app.route('/', methods=['GET'])
+#def index():
+#	if request.args.get('LedOn'):
+#		led = int(request.args.get('number'))
+#		blinktControl.setLed(led - 1)
+#		status = "LED %d turned on" % led
+#	elif request.args.get('LedOff'):
+#		led = int(request.args.get('number'))
+#		blinktControl.clearLed(led - 1)
+#		status = "LED %d turned off" % led
+#	elif request.args.get('allOff'):
+#		blinktControl.clearAll()
+#		status = "All LEDs turned off"
+#	elif request.args.get('allOn'):
+#		blinktControl.setAll()
+#		status = "All LEDs turned on"
+#	else:
+#		print('no idea...')
+#		status = ""
+#
+#	return render_template('index.html', status=status)
 
 # RESTful API
 @app.route('/blinkt', methods=['GET'])
