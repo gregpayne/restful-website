@@ -6,6 +6,8 @@ import blinktControl
 
 app = Flask(__name__)
 
+# Default Blinkt startup configuration
+# TODO: This could be moved to a database instead of being hardcoded
 blinkt = [
 	{'id': 0, 'brightness': 0.1, 'color': '#FFFFFF', 'state': 'false' },
 	{'id': 1, 'brightness': 0.1, 'color': '#FFFFFF', 'state': 'false' },
@@ -19,7 +21,7 @@ blinkt = [
 
 
 # RESTful API
-@app.route('/blinkt', methods=['GET'])
+@app.route('/blinkt/init', methods=['PUT'])
 def blinkt_test():
 	return jsonify(blinkt)
 
