@@ -36,12 +36,21 @@ def update_blinkt(led_id):
 	return jsonify(blinkt)
 
 @app.route('/blinkt/all', methods=['PUT'])
+@app.route('/blinkt/color', methods=['PUT'])
 def update_blinkt_all():
-	for led in blinkt:
-		led['brightness'] = float(request.form.get('brightness'))
-		led['color'] = request.form.get('color')
-		led['state'] = request.form.get('state')
+	if 'all' in request.url:
+		for led in blinkt:
+			led['brightness'] = float(request.form.get('brightness'))
+			led['state'] = request.form.get('state')
+			led['color'] = request.form.get('color')
 		blinktControl.setAll(led['brightness'], led['color'], led['state'])
+
+	if 'color' in request.url:
+		for led in blinkt:
+			led['brightness'] = float(request.form.get('brightness'))
+			led['color'] = request.form.get('color')
+			blinktControl.setLed(led['id'], led['brightness'], led['color'], led['state'])
+
 	return jsonify(blinkt)
 
 # Local methods and runnint the app
