@@ -7,14 +7,14 @@ import blinktControl
 app = Flask(__name__)
 
 blinkt = [
-	{'id': 0, 'brightness': 0.1, 'color': '#FFFFFF', 'state': False },
-	{'id': 1, 'brightness': 0.1, 'color': '#FFFFFF', 'state': False },
-	{'id': 2, 'brightness': 0.1, 'color': '#FFFFFF', 'state': False },
-	{'id': 3, 'brightness': 0.1, 'color': '#FFFFFF', 'state': False },
-	{'id': 4, 'brightness': 0.1, 'color': '#FFFFFF', 'state': False },
-	{'id': 5, 'brightness': 0.1, 'color': '#FFFFFF', 'state': False },
-	{'id': 6, 'brightness': 0.1, 'color': '#FFFFFF', 'state': False },
-	{'id': 7, 'brightness': 0.1, 'color': '#FFFFFF', 'state': False },
+	{'id': 0, 'brightness': 0.1, 'color': '#FFFFFF', 'state': 'false' },
+	{'id': 1, 'brightness': 0.1, 'color': '#FFFFFF', 'state': 'false' },
+	{'id': 2, 'brightness': 0.1, 'color': '#FFFFFF', 'state': 'false' },
+	{'id': 3, 'brightness': 0.1, 'color': '#FFFFFF', 'state': 'false' },
+	{'id': 4, 'brightness': 0.1, 'color': '#FFFFFF', 'state': 'false' },
+	{'id': 5, 'brightness': 0.1, 'color': '#FFFFFF', 'state': 'false' },
+	{'id': 6, 'brightness': 0.1, 'color': '#FFFFFF', 'state': 'false' },
+	{'id': 7, 'brightness': 0.1, 'color': '#FFFFFF', 'state': 'false' },
 ]
 
 
