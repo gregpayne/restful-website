@@ -46,15 +46,6 @@ blinkt = [
 def blinkt_test():
 	return jsonify(blinkt)
 
-@app.route('/blinkt/<led>/<state>', methods=['GET'])
-def set_blinkt_state(led, state):
-	if int(led) in range(0, 8):
-		if int(state) == 0:
-			blinktControl.clearLed(int(led))
-		else:
-			blinktControl.setLed(int(led), 0.1, '#FF0000', "true")
-	return jsonify(blinkt) # Need to send response based on successful request
-
 @app.route('/blinkt/<led_id>', methods=['PUT'])
 def update_blinkt(led_id):
 	led = blinkt[int(led_id)]
