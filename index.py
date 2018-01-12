@@ -28,8 +28,7 @@ def blinkt_test():
 @app.route('/blinkt/<led_id>', methods=['PUT'])
 def update_blinkt(led_id):
 	led = blinkt[int(led_id)]
-#	print(request.form)
-	blinkt[int(led_id)]['brightness'] = float(request.form.get('brightness'))
+	blinkt[int(led_id)]['brightness'] = request.form.get('brightness')
 	blinkt[int(led_id)]['color'] = request.form.get('color')
 	blinkt[int(led_id)]['state'] = request.form.get('state')
 	blinktControl.setLed(int(led_id), blinkt[int(led_id)]['brightness'], blinkt[int(led_id)]['color'], blinkt[int(led_id)]['state'])
@@ -37,6 +36,7 @@ def update_blinkt(led_id):
 
 @app.route('/blinkt/all', methods=['PUT'])
 @app.route('/blinkt/color', methods=['PUT'])
+@app.route('/blinkt/brightness', methods=['PUT'])
 def update_blinkt_all():
 	if 'all' in request.url:
 		for led in blinkt:
@@ -47,8 +47,12 @@ def update_blinkt_all():
 
 	if 'color' in request.url:
 		for led in blinkt:
-			led['brightness'] = float(request.form.get('brightness'))
 			led['color'] = request.form.get('color')
+			blinktControl.setLed(led['id'], led['brightness'], led['color'], led['state'])
+
+	if 'brightness' in request.url:
+		for led in blinkt:
+			led['brightness'] = float(request.form.get('brightness'))
 			blinktControl.setLed(led['id'], led['brightness'], led['color'], led['state'])
 
 	return jsonify(blinkt)
