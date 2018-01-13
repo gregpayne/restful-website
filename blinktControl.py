@@ -6,7 +6,7 @@ from colormap.colors import hex2rgb
 
 def setLed(led, brightness, color, state):
 	if state == "true":
-		blinkt.set_brightness(brightness) # set the brightness between 0 and 1
+		blinkt.set_brightness(float(brightness)) # set the brightness between 0 and 1
 		blinkt.set_pixel(led, getR(color), getG(color), getB(color))
 		blinkt.show()
 	else:
