@@ -21,7 +21,7 @@ blinkt = [
 
 
 # RESTful API
-@app.route('/blinkt/init', methods=['PUT'])
+@app.route('/blinkt/init', methods=['PUT']) # Has to be PUT as the Android App send a PUT
 def blinkt_test():
 	return jsonify(blinkt)
 
